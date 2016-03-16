@@ -1,2 +1,2 @@
 # web-scraper
-inspired by Adnan kukic
+Personal Project Karearea 2016
