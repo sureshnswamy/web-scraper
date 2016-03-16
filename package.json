@@ -1,17 +1,17 @@
 {
   "name": "node-web-scrape",
   "version": "0.0.1",
-  "description": "Scrape le web.",
-  "main": "server.js",
-  "author": "Scotch",
+  "description": "Scrape the web.",
+  "main": "index.js",
   "dependencies": {
     "cheerio": "latest",
+    "debug": "^2.2.0",
     "express": "latest",
     "fs": "0.0.2",
     "request": "latest"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "devDependencies": {},
   "repository": {
@@ -23,5 +23,6 @@
   "bugs": {
     "url": "https://github.com/sureshnswamy/web-scraper/issues"
   },
-  "homepage": "https://github.com/sureshnswamy/web-scraper#readme"
+  "homepage": "https://github.com/sureshnswamy/web-scraper#readme",
+  "author": ""
 }
