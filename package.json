@@ -8,10 +8,11 @@
     "debug": "^2.2.0",
     "express": "latest",
     "fs": "0.0.2",
+    "path": "^0.12.7",
     "request": "latest"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "devDependencies": {},
   "repository": {
@@ -24,5 +25,8 @@
     "url": "https://github.com/sureshnswamy/web-scraper/issues"
   },
   "homepage": "https://github.com/sureshnswamy/web-scraper#readme",
-  "author": ""
+  "author": "",
+  "directories": {
+    "test": "test"
+  }
 }
