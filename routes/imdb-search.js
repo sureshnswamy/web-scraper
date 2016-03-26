@@ -24,26 +24,20 @@ router.get('/search/', function (req, res){
       var title, release, rating;
       var searchRes = { url : ""};
       
-      $('.findlist').filter(function() {
+      $('.findList').filter(function() {
         var data = $(this);
-        title = data.children().first().text().trim();
-              // release = data.children().last().children().last().text().trim();
-              // movie.title = title;
-              // movie.release = release;
-              console.log(title)
+        titles = data.text().trim();
+        photo = data.childern().first().trim()
+        console.log(titles)
       })
     }
+    fs.appendFile('./data/movieList.json', JSON.stringify(titles, null, ' '), function(err) {
+      console.log('File successfully written to  movieList.json  file');
+    })
+
     res.send('Your movie serach is here!')
   })
 
 })
 
-//     //     fs.appendFile('./data/movies.json', JSON.stringify(movie, null, ' '), function(err) {
-//       console.log('File successfully written! Check project directory movies.json  file');
-//     })
-//     
-//   })
-// })
-
-//console.log('Scrapping happens on port 9966');
 module.exports = router
