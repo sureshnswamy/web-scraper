@@ -15,7 +15,7 @@ app.set('port', 9966)
 
 app.get('/', index)
 app.get('/scrape', routes)
-app.get('/search', search)
+app.get('/search/', search)
 
 
 // Listen for requests
