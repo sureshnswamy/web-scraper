@@ -1,5 +1,5 @@
 {
-  "name": "node-web-scrape",
+  "name": "web-scrape",
   "version": "0.0.1",
   "description": "Scrape the web.",
   "main": "index.js",
@@ -8,15 +8,21 @@
     "debug": "^2.2.0",
     "express": "latest",
     "fs": "0.0.2",
+    "hyperscript": "^1.4.7",
+    "jquery": "^2.2.2",
     "nodemon": "^1.9.1",
     "path": "^0.12.7",
     "request": "^2.69.0",
+    "superagent": "^1.8.3",
+    "supertest": "~1.2.0",
     "tape": "~4.5.1",
-    "supertest": "~1.2.0"
+    "uglifyify": "^3.0.1",
+    "watchify": "^3.7.0"
   },
   "scripts": {
-    "start": "node server.js",
-    "test": "node ./test/tap-test.js | tap-spec"
+    "start": "budo ./src/index.js -d --serve bundle.js --live",
+    "test": "node ./test/tap-test.js | tap-spec",
+    "build": "browserify . -o bundle.js -g uglifyify"
   },
   "devDependencies": {
     "tap-spec": "~4.1.1"
@@ -26,7 +32,7 @@
     "url": "git+https://github.com/sureshnswamy/web-scraper.git"
   },
   "keywords": [],
-  "license": "BSD-2-Clause",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/sureshnswamy/web-scraper/issues"
   },

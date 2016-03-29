@@ -22,13 +22,13 @@ var url= 'http://www.imdb.com/find?ref_=nv_sr_fn&q='+str+'&s=all'
 
 
   request(url, function (err, response, html) {
-    
+
     if(!err) {
-        
+
       var $ = cheerio.load(html);
 
       var  data, img, titleUrl, imgUrl;
-        
+
       $('.primary_photo').each(function() {
         data = $(this).children();
         titleUrl = data.attr('href')
@@ -37,7 +37,7 @@ var url= 'http://www.imdb.com/find?ref_=nv_sr_fn&q='+str+'&s=all'
         imgUrl= $('img', data).attr("src")
         searchList['titleUrl'] = title
         searchList['imgUrl'] = imgUrl
-        fs.appendFileSync('./data/movieList.json', JSON.stringify(searchList)+'\n')
+        fs.writeFileSync('./data/movieList.json', JSON.stringify(searchList)+'\n')
           //console.log("here is title and image link", movieList)
       })
     }

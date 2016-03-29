@@ -7,7 +7,7 @@ var router = express.Router();
 
 
 router.get('/scrape', function(req, res){
-  
+
   url = 'http://www.imdb.com/title/tt1229340/'
   //url= 'http://www.imdb.com/title/tt2488496/';
   var movies = {'movie':[]}
@@ -43,8 +43,8 @@ router.get('/scrape', function(req, res){
       })
         movies['movie'].push(movie)
     }
-    
-    fs.appendFile('./data/movie-data.json', JSON.stringify(movies),  function(err) {
+
+    fs.writeFile('./data/movie-data.json', JSON.stringify(movies),  function(err) {
       console.log('File successfully written! Check project directory movies.json  file');
     })
     res.send('Check your console!')
