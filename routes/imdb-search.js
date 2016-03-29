@@ -8,12 +8,12 @@ var router = express.Router();
 //var searchList = {'movies':[{ 'titlesUrl': '', imageUrl:''}]}
 
 router.get('/search/', function (req, res){
-<<<<<<< HEAD
+
 var searchList = {}
 var str = 'jaws'
 var url= 'http://www.imdb.com/find?ref_=nv_sr_fn&q='+str+'&s=all'
 console.log ('here is search', str, url)
-=======
+
   var str = 'jaws'
 
   // var str = JSON.stringyfy(movieName)
@@ -22,12 +22,11 @@ console.log ('here is search', str, url)
 
   console.log ('here is search', str, url)
 
->>>>>>> b5ebe81cedd993704a7bcc286982129d18933708
+
 
   request(url, function (err, response, html) {
     
     if(!err) {
-<<<<<<< HEAD
         
       var $ = cheerio.load(html);
 
@@ -45,7 +44,7 @@ console.log ('here is search', str, url)
           //console.log("here is title and image link", movieList)
       })
     }
-=======
+
 
 
       var $ = cheerio.load(html);
@@ -74,7 +73,6 @@ console.log ('here is search', str, url)
     //   console.log('File successfully written to  movieList.json  file');
     // })
 
->>>>>>> b5ebe81cedd993704a7bcc286982129d18933708
     res.send('Your movie serach is here!')
   })
 
