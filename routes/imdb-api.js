@@ -47,7 +47,7 @@ router.get('/scrape', function(req, res){
     fs.writeFile('./data/movie-data.json', JSON.stringify(movies),  function(err) {
       console.log('File successfully written! Check project directory movies.json  file');
     })
-    res.send('Check your console!')
+    res.json(movies)
   })
 })
 

@@ -1,8 +1,11 @@
 main {
   text-align: center;
+  background-color: blue;
 }
 textarea
 {
    font-family:"Times New Roman", Times, serif;
    font-size: 50px;
 }
+
+.hidden{display:none;}

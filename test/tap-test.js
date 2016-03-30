@@ -14,27 +14,27 @@ var imdbApi = require('../routes/imdb-api')
 var imdbSearch = require('../routes/imdb-search')
 
 
-// test('get status code 200 from index', function(t) {
-//   request(app)
-//     .get('/')
-//     .expect(200)
-//     .end(function(err, res) {
-//       t.false(err)
-//       t.equal(res.text, "Welcome to Movie.", 'Index page responds')
-//       t.end()
-//     })
-// })
-
-test('get status code 200 from search', function(t) {
+test('get status code 200 from index', function(t) {
   request(app)
-    .get('/search')
+    .get('/')
     .expect(200)
     .end(function(err, res) {
       t.false(err)
-      t.equal(res.text, 'Your movie search is here!', 'Search page responds')
+     // t.equal(res.text, "Welcome to Movie.", 'Index page responds')
       t.end()
     })
 })
+
+// test('get status code 200 from search', function(t) {
+//   request(app)
+//     .get('/search')
+//     .expect(200)
+//     .end(function(err, res) {
+//       t.false(err)
+//       t.equal(res.text, 'Your movie search is here!', 'Search page responds')
+//       t.end()
+//     })
+// })
 
 test('Correct movie data returned', function (t) {
   request(app)

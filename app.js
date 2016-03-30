@@ -23,17 +23,13 @@ app.get('/',  function (req, res) {
 
 
 app.post('/search', search, function (req,res) {
-  var searchStr = req.body.movStr
-  res.send(searchStr)
+  
 })
 
-app.get('/scrape', routes, function (req, res) {
+app.get('/scrape', routes,function (req, res) {
 	res.text;
 });
 
-// app.get('/search/', search, function (req, res) {
-// 	res.send('OK');
-// });
 
 // Listen for requests
 app.listen(port, function() {

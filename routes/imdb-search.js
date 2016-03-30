@@ -31,8 +31,9 @@ router.post('/search',function (req, res){
         searchList['titleUrl'] = 'http://www.imdb.com'+title
         searchList['imgUrl'] = imgUrl
         searchRes.push(searchList)
-        fs.writeFileSync('./data/movieList.json', JSON.stringify(searchList)+'\n')
+        fs.appendFileSync('./data/movieList.json', JSON.stringify(searchList)+'\n')
       })
+
       res.json(searchRes)
     }
   })
