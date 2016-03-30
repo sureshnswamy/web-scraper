@@ -1,17 +1,19 @@
 var $ = require ('jquery')
-var request = require('superagent')
 var h = require ('hyperscript')
+//var client = require ('./client')
 
-console.log('hello')
-
-
-// $(document).ready(function (){
-//     request
-//       .get('/')
-//       .end(function(err, res){
-//         console.log("err:", err, "res: ", res.body)
-//         res.json()
+console.log('hello again')
 
 
-// })
+$(document).ready(function(){
+
+
+    // $("submit").click(function(){
+    //     $.get('/', function(data, status){
+    //         alert("Data: " + data + "\nStatus: " + status);
+    //     });
+    // });
+});
+
+// module.exports =
 

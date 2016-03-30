@@ -9,7 +9,8 @@ var router = express.Router();
 router.get('/search/', function (req, res){
 
 var searchList = {}
-var str = 'jaws'
+console.log(req.body, 'here is search string')
+var str = req.body
 var url= 'http://www.imdb.com/find?ref_=nv_sr_fn&q='+str+'&s=all'
   var str = 'jaws'
 

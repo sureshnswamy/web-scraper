@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <title>movie</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="bundle.js"></script>
     <link href="index.css" rel="stylesheet" />
   </head>
   <body>
@@ -12,6 +13,20 @@
       <h1>Movie</h1>
 
       <h2>Search Movie </h2>
+      <script>
+      $(document).ready(function() {
+        var movStr
+        $("#submit").click(function() {
+          movStr = $("#search").val();
+          $.post("http://localhost:9966/search/",{movStr:movStr}, function(data) {
+            if(data==='done')
+              {
+                alert("success")
+              }
+          })
+        })
+      })
+      </script>
       <form class="new_entry" id="new_entry" accept-charset="UTF-8" method="post">
       <textarea id="search" name="search" cols="50" rows="2" class="html-text-box" placeholder="Enter movie name here..."></textarea>
       <br>
@@ -19,6 +34,6 @@
       </form>
       <div id="search-result"></div>
     </main>
-    <script src="bundle.js"></script>
+
 </body>
  </html>

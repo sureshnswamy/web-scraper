@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path')
+var bodyParser = require('body-parser');
 
 var index = require('./routes/index')
 var routes = require('./routes/imdb-api')
@@ -8,14 +9,23 @@ var search = require('./routes/imdb-search')
 var app = express();
 
 // Define the port to run on
-app.set('port', 9966)
+var port = 9966
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-//app.use(express.static(path.join(__dirname, 'routes')))
+// render html to client
+app.use(express.static(__dirname + '/public'));
 
-app.get('/', index, function (req, res) {
-	res.send('OK');
+app.get('/',  function (req, res) {
+	res.send('index.html');
 });
+
+
+app.post('/search/', function (req,res) {
+  var searchStr = req.body.movStr
+  res.send(searchStr)
+})
 
 app.get('/scrape', routes, function (req, res) {
 	res.text;
@@ -27,8 +37,7 @@ app.get('/search/', search, function (req, res) {
 
 
 // Listen for requests
-var server = app.listen(app.get('port'), function() {
-  var port = server.address().port;
+app.listen(port, function() {
   console.log('Magic happens on port ' + port);
 });
 
