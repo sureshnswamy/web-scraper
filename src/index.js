@@ -1,19 +1,17 @@
 var $ = require ('jquery')
 var h = require ('hyperscript')
-//var client = require ('./client')
-
-console.log('hello again')
 
 
-$(document).ready(function(){
+console.log('hello page')
+
+// $(document).ready(function(){
+//   $("#submit").click(function(){
+//     $.post('/', function(req,res){
+
+//       alert("Data: " + data + "\nStatus: " + status);
+//     });
+//   });
+// });
 
 
-    // $("submit").click(function(){
-    //     $.get('/', function(data, status){
-    //         alert("Data: " + data + "\nStatus: " + status);
-    //     });
-    // });
-});
-
-// module.exports =
 

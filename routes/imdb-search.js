@@ -5,46 +5,37 @@ var cheerio = require('cheerio');
 
 var router = express.Router();
 
+router.post('/search',function (req, res){
+  var str = JSON.stringify(req.body.search)
 
-router.get('/search/', function (req, res){
-
-var searchList = {}
-console.log(req.body, 'here is search string')
-var str = req.body
-var url= 'http://www.imdb.com/find?ref_=nv_sr_fn&q='+str+'&s=all'
-  var str = 'jaws'
-
-  // var str = JSON.stringyfy(movieName)
+  // if(!str) {
+  //   res.send("That is not correct name please try again")
+  // }
 
   var url= 'http://www.imdb.com/find?ref_=nv_sr_fn&q='+str+'&s=all'
-
-  //console.log ('here is search', str, url)
-
-
+  //console.log(req.body, url, 'here is search string')
 
   request(url, function (err, response, html) {
 
     if(!err) {
-
       var $ = cheerio.load(html);
-
-      var  data, img, titleUrl, imgUrl;
-
+      var searchRes =[]
       $('.primary_photo').each(function() {
+        var  data, img, titleUrl, imgUrl;
+        var searchList = {}
         data = $(this).children();
         titleUrl = data.attr('href')
         titleTrim = titleUrl.indexOf('?')
         title= titleUrl.substring(titleTrim,0)
         imgUrl= $('img', data).attr("src")
-        searchList['titleUrl'] = title
+        searchList['titleUrl'] = 'http://www.imdb.com'+title
         searchList['imgUrl'] = imgUrl
+        searchRes.push(searchList)
         fs.writeFileSync('./data/movieList.json', JSON.stringify(searchList)+'\n')
-          //console.log("here is title and image link", movieList)
       })
+      res.json(searchRes)
     }
-    res.send('Your movie search is here!')
   })
-
 })
 
 module.exports = router
