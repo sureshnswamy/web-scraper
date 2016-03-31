@@ -26,7 +26,7 @@ app.post('/search', search, function (req,res) {
   
 })
 
-app.get('/scrape', routes,function (req, res) {
+app.post('/scrape', routes,function (req, res) {
 	res.text;
 });
 

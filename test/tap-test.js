@@ -38,7 +38,8 @@ test('get status code 200 from index', function(t) {
 
 test('Correct movie data returned', function (t) {
   request(app)
-    .get('/scrape')
+    .post('/scrape')
+    .send({scrape: 'http://www.imdb.com/title/tt1229340/'})
     .expect(200)
     .end(function (err, res) {
       console.log(res.text)
