@@ -34,17 +34,14 @@ router.post('/scrape', function(req, res){
       })
 
       $('.slate_wrapper').filter(function(){
-        var data =$(this)
+        var data = $(this)
         poster = data.children().first().children().first().children().first()[0].attribs.src
-        //console.log(data.children().first().children().first().children().first()[0].attribs.src)
         movie.poster = poster
-
       })
 
       $('.ratingValue').filter(function(){
         var data = $(this);
         rating = data.text().trim();
-
         movie.rating = rating;
       })
         movies['movie'].push(movie)
