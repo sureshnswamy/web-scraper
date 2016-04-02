@@ -22,9 +22,9 @@ var page = h('div#main',{},
 				h('div#result', 
 					h('table', {sytle:{'class':'hidden'}},
 						h('caption', 'Movie search results links'),
-	  					h('tr', h('th', 'Movie  Url'), h('th', 'Image')),
-	  					h('tr',h('td'), h('td'))
-					)
+						h('tr', h('th', 'Movie  Url'), h('th', 'Image')),
+						h('tbody#searchList')
+	  				)
 				)
 			)
 	    		
@@ -48,7 +48,7 @@ $(document).ready(function() {
 function searchIMDB(str){
 	
 	//alert(str)
-	$('#result').show()
+	
 request
 	.post('/search')
 	.send(str)
@@ -62,10 +62,11 @@ request
 		var txt = ''
 		for(var i=0;i<len;i++){
 	 		if(list[i].titleUrl && list[i].imgUrl){
-	           	txt += "<tr><td>"+list[i].titleUrl+"</td><td>"+list[i].imgUrl+"</td></tr>";
+	           	txt += "<tr><td>"+list[i].titleUrl+"</td><td><img src="+list[i].imgUrl+"/></td></tr>";
 	       	}
 	 	   	if(txt != ''){
-		    	$('#table').append(txt).show('#result')
+	 	   		$('#result').show()
+		    	$('#searchList').html(txt)
 		    }
 		}
 	})
