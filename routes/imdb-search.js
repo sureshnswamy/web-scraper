@@ -7,6 +7,7 @@ var router = express.Router();
 
 router.post('/search',function (req, res){
   var str = JSON.stringify(req.body.search)
+  console.log(str, 'here is api req')
 
   // if(!str) {
   //   res.send("That is not correct name please try again")
