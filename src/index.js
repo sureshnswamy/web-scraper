@@ -13,7 +13,7 @@ var page = h('div#main',{},
 
 				h('div#content', 
                    h('h2', 'search', {style: {'color': 'red'}} ),
-                   h('textarea#txtsearch', 'Enter movie name here...', {style:{'cols':'25', 'rows':'1', 'class':'html-text-box', 'placeholder':'Enter movie name here...'}}),
+                   h('textarea#txtsearch',  {style:{'cols':'25', 'rows':'1', 'class':'html-text-box', 'placeholder':'Enter movie name here...'}}),
                    // h('input#search', 'search', {style: {'height': '15px', 'width': '200px'}}),
                    h('button#search', 'search', {})
                  ),
@@ -38,33 +38,37 @@ $(document).ready(function() {
 
 
 	$('#search').click(function(){
-		searchIMDB()
+		var searchStr = $('#txtsearch').val()
+		//console.log(searchStr)
+		searchIMDB(searchStr)
     	 
     })
 })
 
-function searchIMDB(){
-	var str = $('#search').val()
-	alert(str)
+function searchIMDB(str){
+	
+	//alert(str)
 	$('#result').show()
-// request
-// 	.post('/search')
-
-// 	.send(str)
-// 	.end(function(err, res) {
-// 		alert(res.text)
-// 		var len = res.text()
-// 		console.log( res, len, 'here is' +len+'number of search result')
-// 		var txt = ''
-// 		for(var i=0;i<len.length;i++){
-// 	 		if(res[i].titleUrl && res[i].imgUrl){
-// 	           	txt += "<tr><td>"+res[i].titleUrl+"</td><td>"+res[i].imgUrl+"</td></tr>";
-// 	       	}
-// 	   	}
-// 		   	if(txt != ''){
-// 		    	$('#table').append(txt).show('#result')
-// 			}
-// 	})
+request
+	.post('/search')
+	.send(str)
+	.set('Accept', 'application/json')
+	.end(function(err, res) {
+		if (err) throw err
+		//console.log(res.text, typeof res)
+		var list = JSON.parse(res.text)
+		var len= list.length
+		console.log( list[0].titleUrl, typeof list, len, 'here is' +len+'number of search result')
+		var txt = ''
+		for(var i=0;i<len;i++){
+	 		if(list[i].titleUrl && list[i].imgUrl){
+	           	txt += "<tr><td>"+list[i].titleUrl+"</td><td>"+list[i].imgUrl+"</td></tr>";
+	       	}
+	 	   	if(txt != ''){
+		    	$('#table').append(txt).show('#result')
+		    }
+		}
+	})
 
 }
 
