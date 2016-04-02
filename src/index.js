@@ -34,19 +34,19 @@ var page = h('div#main',{},
 $(document).ready(function() {
 	$('body').append($(page))
 	
-	// $('#result').hide()
+	$('#result').hide()
 
 
 	$('#search').click(function(){
 		searchIMDB()
-    	 $('#result').hide()
+    	 
     })
 })
 
 function searchIMDB(){
 	var str = $('#search').val()
-	console.log(str)
-	$('#table').append(str).show('#result')
+	alert(str)
+	$('#result').show()
 // request
 // 	.post('/search')
 
