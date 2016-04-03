@@ -22,7 +22,7 @@ var page = h('div#main',{},
 				h('div#result', 
 					h('table', {sytle:{'class':'hidden'}},
 						h('caption', 'Movie search results links'),
-						h('tr', h('th', 'Movie  Url'), h('th', 'Image')),
+						h('tr', h('th', 'Movie  title'), h('th', 'Movie URL'), h('th', 'Image')),
 						h('tbody#searchList')
 	  				)
 				)
@@ -61,8 +61,8 @@ request
 		console.log( list[0].titleUrl, typeof list, len, 'here is' +len+'number of search result')
 		var txt = ''
 		for(var i=0;i<len;i++){
-	 		if(list[i].titleUrl && list[i].imgUrl){
-	           	txt += "<tr><td>"+list[i].titleUrl+"</td><td><img src="+list[i].imgUrl+"/></td></tr>";
+	 		if(list[i].titleTxt && list[i].titleUrl){
+	           	txt += "<tr><td>"+list[i].titleTxt+"</td><td>"+list[i].titleUrl+"</td><td><img src = ></td></tr>";
 	       	}
 	 	   	if(txt != ''){
 	 	   		$('#result').show()

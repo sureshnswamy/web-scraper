@@ -21,14 +21,16 @@ router.post('/search',function (req, res){
     if(!err) {
       var $ = cheerio.load(html);
       var searchRes =[]
-      $('.primary_photo').each(function() {
-        var  data, img, titleUrl, imgUrl;
+      $('.result_text').each(function() {
+        var  data, img, titleUrl, titleTxt, imgUrl;
         var searchList = {}
         data = $(this).children();
         titleUrl = data.attr('href')
         titleTrim = titleUrl.indexOf('?')
-        title= titleUrl.substring(titleTrim,0)
+        title= titleUrl.substring(titleTrim,0) 
+        titleTxt = data.text()
         imgUrl= $('img', data).attr("src")
+        searchList['titleTxt'] = titleTxt
         searchList['titleUrl'] = 'http://www.imdb.com'+title
         searchList['imgUrl'] = imgUrl
         searchRes.push(searchList)
